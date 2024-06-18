@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { signup } from "../api/auth.api";
+import { useAlert } from "../hooks/useAlert";
 
 export interface SignupProps {
   email: string;
@@ -14,6 +15,7 @@ export interface SignupProps {
 
 function Signup() {
   const navigate = useNavigate();
+  const showAlert = useAlert();
 
   const {
     register,
@@ -23,7 +25,7 @@ function Signup() {
 
   const onSubmit = (data: SignupProps) => {
     signup(data).then((res) => {
-      window.alert("회원가입이 완료되었습니다.");
+      showAlert("회원가입이 완료되었습니다.");
       navigate("/login");
     });
   };
