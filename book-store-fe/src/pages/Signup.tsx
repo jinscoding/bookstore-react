@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Title from "../components/common/Title";
 import InputText from "../components/common/InputText";
 import Button from "../components/common/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { signup } from "../api/auth.api";
@@ -13,6 +13,8 @@ export interface SignupProps {
 }
 
 function Signup() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -22,6 +24,7 @@ function Signup() {
   const onSubmit = (data: SignupProps) => {
     signup(data).then((res) => {
       window.alert("회원가입이 완료되었습니다.");
+      navigate("/login");
     });
   };
 
