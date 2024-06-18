@@ -37,7 +37,7 @@ function Header() {
             </a>
           </li>
           <li>
-            <a href='/join'>
+            <a href='/signup'>
               <FaRegUser />
               회원가입
             </a>
