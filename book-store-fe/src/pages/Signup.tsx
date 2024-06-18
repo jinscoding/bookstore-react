@@ -5,6 +5,7 @@ import Button from "../components/common/Button";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { signup } from "../api/auth.api";
 
 export interface SignupProps {
   email: string;
@@ -19,7 +20,9 @@ function Signup() {
   } = useForm<SignupProps>();
 
   const onSubmit = (data: SignupProps) => {
-    console.log(data);
+    signup(data).then((res) => {
+      window.alert("회원가입이 완료되었습니다.");
+    });
   };
 
   return (
