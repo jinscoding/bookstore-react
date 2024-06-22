@@ -19,6 +19,18 @@ function BooksFilter() {
     setSearchParams(newSearchParams);
   };
 
+  const handleNews = () => {
+    const newSearchParams = new URLSearchParams(searchParams);
+
+    if (newSearchParams.get("news")) {
+      newSearchParams.delete("news");
+    } else {
+      newSearchParams.set("news", "true");
+    }
+
+    setSearchParams(newSearchParams);
+  };
+
   return (
     <BooksFilterStyle>
       <div className='category'>
@@ -34,7 +46,11 @@ function BooksFilter() {
         ))}
       </div>
       <div className='new'>
-        <Button size='medium' scheme='normal'>
+        <Button
+          size='medium'
+          scheme={searchParams.get("news") ? "primary" : "normal"}
+          onClick={() => handleNews()}
+        >
           신간
         </Button>
       </div>
