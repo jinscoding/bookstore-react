@@ -18,6 +18,15 @@ export const useCategory = () => {
           };
         });
       });
+    } else {
+      setCategory((prev) => {
+        return prev.map((item) => {
+          return {
+            ...item,
+            isActive: false,
+          };
+        });
+      });
     }
   };
 
