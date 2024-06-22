@@ -11,7 +11,7 @@ interface Props {
 function BookItem({ book }: Props) {
   return (
     <BookItemStyle>
-      <div className='lmg'>
+      <div className='img'>
         <img src={getImgSrc(book.img)} alt={book.title} />
       </div>
       <div className='content'>
@@ -39,7 +39,6 @@ const BookItemStyle = styled.div`
       max-width: 100%;
     }
   }
-
 
   .content {
     padding: 16px;
@@ -88,6 +87,7 @@ const BookItemStyle = styled.div`
       svg {
         color: ${({ theme }) => theme.color.primary};
       }
+    }
   }
 `;
 
