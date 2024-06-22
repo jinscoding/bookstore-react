@@ -19,19 +19,13 @@ function BooksFilter() {
     setSearchParams(newSearchParams);
   };
 
-  const currentCategory = searchParams.get("category_id");
-
-  console.log(currentCategory);
-
   return (
     <BooksFilterStyle>
       <div className='category'>
         {category.map((item) => (
           <Button
             size='medium'
-            scheme={
-              currentCategory === item.id?.toString() ? "primary" : "normal"
-            }
+            scheme={item.isActive ? "primary" : "normal"}
             key={item.id}
             onClick={() => handleCategory(item.id)}
           >
