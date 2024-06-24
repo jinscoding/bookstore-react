@@ -66,6 +66,10 @@ const BooksFilterStyle = styled.div`
     display: flex;
     gap: 8px;
   }
+
+  .new {
+    display: flex;
+  }
 `;
 
 export default BooksFilter;
