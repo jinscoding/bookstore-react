@@ -108,7 +108,7 @@ export const dark: Theme = {
     secondary: "darkblue",
     third: "darkgreen",
     border: "grey",
-    text: "blak",
+    text: "black",
   },
 };
 
