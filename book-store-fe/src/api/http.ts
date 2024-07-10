@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { getToken, removeToken } from "../store/authStore";
 
-const BASE_URL = "http://localhost:9999";
+const BASE_URL = "http://localhost:9997";
 const DEFAULT_TIMEOUT = 3000;
 
 export const createClient = (config?: AxiosRequestConfig) => {
@@ -9,12 +9,24 @@ export const createClient = (config?: AxiosRequestConfig) => {
     baseURL: BASE_URL,
     timeout: DEFAULT_TIMEOUT,
     headers: {
-      "content-type": "application/json",
-      Authorization: getToken() ? getToken() : "",
+      "Content-Type": "application/json",
     },
     withCredentials: true,
     ...config,
   });
+
+  axiosInstance.interceptors.request.use(
+    (config) => {
+      const token = getToken();
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
 
   axiosInstance.interceptors.response.use(
     (response) => {

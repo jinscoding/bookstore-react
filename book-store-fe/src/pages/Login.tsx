@@ -29,6 +29,7 @@ function Login() {
   const onSubmit = (data: SignupProps) => {
     login(data).then(
       (res) => {
+        console.log(res.token);
         storeLogin(res.token);
         showAlert("로그인 완료되었습니다.");
         navigate("/");
@@ -39,6 +40,7 @@ function Login() {
     );
   };
 
+  console.log(isloggedIn);
   return (
     <>
       <Title size='large'>로그인</Title>
